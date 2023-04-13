@@ -1,7 +1,7 @@
-import DashboardCard from '@/components/DashboardCard';
 import { Box, useMediaQuery } from '@mui/material';
-
-type Props = {};
+import Row1 from './Row1';
+import Row2 from './Row2';
+import Row3 from './Row3';
 
 const gridTemplateLargeScreens = `
   "a b c"
@@ -50,7 +50,7 @@ const gridTemplateSmallScreens = `
 
 `;
 
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
   const isAboveMediumScreens = useMediaQuery('(min-width: 1014px)');
   return (
     <Box
@@ -58,7 +58,7 @@ const Dashboard = (props: Props) => {
       height={'100%'}
       display={'grid'}
       gap={'1.5rem'}
-      sx={
+      style={
         isAboveMediumScreens
           ? {
               gridTemplateColumns: 'repeat(3, minmax(305px, 1fr))',
@@ -72,17 +72,9 @@ const Dashboard = (props: Props) => {
             }
       }
     >
-      <DashboardCard></DashboardCard>
-      <DashboardCard gridArea={'a'}></DashboardCard>
-      <DashboardCard gridArea={'b'}></DashboardCard>
-      <DashboardCard gridArea={'c'}></DashboardCard>
-      <DashboardCard gridArea={'d'}></DashboardCard>
-      <DashboardCard gridArea={'e'}></DashboardCard>
-      <DashboardCard gridArea={'f'}></DashboardCard>
-      <DashboardCard gridArea={'g'}></DashboardCard>
-      <DashboardCard gridArea={'h'}></DashboardCard>
-      <DashboardCard gridArea={'i'}></DashboardCard>
-      <DashboardCard gridArea={'j'}></DashboardCard>
+      <Row1 />
+      <Row2 />
+      <Row3 />
     </Box>
   );
 };
