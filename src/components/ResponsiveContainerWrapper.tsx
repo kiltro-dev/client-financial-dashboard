@@ -1,6 +1,20 @@
 import { Box } from '@mui/material';
-import React from 'react';
 import { ResponsiveContainer } from 'recharts';
+import { styled } from '@mui/system';
+
+const Parent = styled(Box)({
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+});
+
+const Child = styled(Box)({
+  width: '100%',
+  height: '100%',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+});
 
 type Props = {
   children: JSX.Element;
@@ -8,19 +22,13 @@ type Props = {
 
 const ResponsiveContainerWrapper: React.FC<Props> = ({ children }) => {
   return (
-    <Box width={'100%'} height={'100%'} position={'relative'}>
-      <Box
-        width={'100%'}
-        height={'100%'}
-        position={'absolute'}
-        top={0}
-        left={0}
-      >
+    <Parent>
+      <Child>
         <ResponsiveContainer width="99%" height="100%">
           {children}
         </ResponsiveContainer>
-      </Box>
-    </Box>
+      </Child>
+    </Parent>
   );
 };
 

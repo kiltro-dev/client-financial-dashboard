@@ -148,7 +148,7 @@ const Row1 = () => {
               top: 20,
               right: 0,
               left: -10,
-              bottom: 55,
+              bottom: 70,
             }}
           >
             <CartesianGrid vertical={false} stroke={palette.grey[800]} />
@@ -171,10 +171,7 @@ const Row1 = () => {
               style={{ fontSize: '10px' }}
             />
             <Tooltip />
-            <Legend
-              height={20}
-              wrapperStyle={{ margin: '0 0 10px 0' }}
-            ></Legend>
+            <Legend></Legend>
             <Line
               yAxisId="left"
               type="monotone"
