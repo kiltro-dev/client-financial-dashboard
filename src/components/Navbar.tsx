@@ -5,9 +5,7 @@ import { Dashboard } from '@mui/icons-material';
 import { Box, Typography, useTheme } from '@mui/material';
 import FlexBetween from './FlexBetween';
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const { palette } = useTheme();
   const [selected, setSelected] = useState('dashboard');
   return (

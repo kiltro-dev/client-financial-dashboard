@@ -1,12 +1,10 @@
 import DashboardCard from '@/components/DashboardCard';
 import { useGetKpisQuery } from '@/state/api';
 import { useTheme } from '@mui/material';
-import { MonitorHeart, RemoveDoneOutlined } from '@mui/icons-material';
 import { useMemo } from 'react';
 import {
   Area,
   AreaChart,
-  ResponsiveContainer,
   XAxis,
   YAxis,
   Tooltip,
@@ -18,6 +16,7 @@ import {
   Bar,
 } from 'recharts';
 import BoxHeader from '@/components/BoxHeader';
+import ResponsiveContainerWrapper from '@/components/ResponsiveContainerWrapper';
 
 const Row1 = () => {
   const { palette } = useTheme();
@@ -50,12 +49,10 @@ const Row1 = () => {
 
   const revenue = useMemo(() => {
     if (!data) return;
-    const mappedData = data[0].monthlyData.map(
-      ({ month, revenue }) => ({
-        name: month.substring(0, 3),
-        revenue,
-      }),
-    );
+    const mappedData = data[0].monthlyData.map(({ month, revenue }) => ({
+      name: month.substring(0, 3),
+      revenue,
+    }));
 
     return mappedData;
   }, [data]);
@@ -68,7 +65,7 @@ const Row1 = () => {
           subtitle="top line represents revenue, bottom line represets expenses"
           sideText="+4%"
         />
-        <ResponsiveContainer width="99%" height="100%">
+        <ResponsiveContainerWrapper>
           <AreaChart
             width={500}
             height={400}
@@ -135,7 +132,7 @@ const Row1 = () => {
               dot={true}
             />
           </AreaChart>
-        </ResponsiveContainer>
+        </ResponsiveContainerWrapper>
       </DashboardCard>
 
       <DashboardCard gridArea={'b'}>
@@ -144,7 +141,7 @@ const Row1 = () => {
           subtitle="top line represents revenue, bottom line represets expenses"
           sideText="+4%"
         />
-        <ResponsiveContainer width="99%" height="100%">
+        <ResponsiveContainerWrapper>
           <LineChart
             data={revenueProfit}
             margin={{
@@ -191,15 +188,16 @@ const Row1 = () => {
               stroke={palette.primary.main}
             />
           </LineChart>
-        </ResponsiveContainer>
+        </ResponsiveContainerWrapper>
       </DashboardCard>
+
       <DashboardCard gridArea={'c'}>
         <BoxHeader
           title="Revenue Month by Month"
           subtitle="graph representing the revenue month by month"
           sideText="+4%"
         />
-        <ResponsiveContainer  width="99%" height="100%">
+        <ResponsiveContainerWrapper>
           <BarChart
             width={500}
             height={300}
@@ -240,7 +238,7 @@ const Row1 = () => {
             <Tooltip />
             <Bar dataKey="revenue" fill="url(#colorRevenue)" />
           </BarChart>
-        </ResponsiveContainer>
+        </ResponsiveContainerWrapper>
       </DashboardCard>
     </>
   );
