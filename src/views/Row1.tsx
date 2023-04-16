@@ -24,37 +24,28 @@ const Row1 = () => {
 
   const revenueExpenses = useMemo(() => {
     if (!data) return;
-    const mappedData = data[0].monthlyData.map(
-      ({ month, revenue, expenses }) => ({
-        name: month.substring(0, 3),
-        revenue,
-        expenses,
-      }),
-    );
-
-    return mappedData;
+    return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
+      name: month.substring(0, 3),
+      revenue,
+      expenses,
+    }));
   }, [data]);
 
   const revenueProfit = useMemo(() => {
     if (!data) return;
-    const mappedData = data[0].monthlyData.map(
-      ({ month, revenue, expenses }) => ({
-        name: month.substring(0, 3),
-        revenue,
-        profit: (revenue - expenses).toFixed(2),
-      }),
-    );
-    return mappedData;
+    return data[0].monthlyData.map(({ month, revenue, expenses }) => ({
+      name: month.substring(0, 3),
+      revenue,
+      profit: (revenue - expenses).toFixed(2),
+    }));
   }, [data]);
 
   const revenue = useMemo(() => {
     if (!data) return;
-    const mappedData = data[0].monthlyData.map(({ month, revenue }) => ({
+    return data[0].monthlyData.map(({ month, revenue }) => ({
       name: month.substring(0, 3),
       revenue,
     }));
-
-    return mappedData;
   }, [data]);
 
   return (
