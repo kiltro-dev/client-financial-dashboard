@@ -44,7 +44,6 @@ const Row2 = () => {
 
   const productExpenseData = useMemo(() => {
     if (!productData) return;
-    console.log(productData);
     return productData.map(({ _id, price, expense }) => ({
       id: _id,
       price,
